@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/env-cmd  -f ./.env.dev pm2 start -f  app.js"
+    "start": "./node_modules/.bin/env-cmd  -f ./.env.prod pm2 start -f  app.js"
   },
   "keywords": [],
   "author": "",
