@@ -1,0 +1,108 @@
+// createTable 
+
+{
+    "TableName": "Movies",
+
+    "KeySchema": [
+      {
+        "AttributeName": "year",
+        "KeyType": "HASH"
+      },
+      {
+        "AttributeName": "title",
+        "KeyType": "RANGE"
+      }
+    ],
+    "AttributeDefinitions": [
+        {
+          "AttributeName": "year",
+          "AttributeType": "N"
+        },
+        {
+          "AttributeName": "title",
+          "AttributeType": "S"
+        }
+      ],
+    "ProvisionedThroughput": {
+      "ReadCapacityUnits": 1,
+      "WriteCapacityUnits": 1
+    }
+   
+     
+  }
+
+
+
+// insertData  
+
+
+{
+    "TableName": "Movies",
+    "Item": {
+      "year" : 1998,
+      "title" :  "As soon as",
+      "info":{
+        "plot":"plot # 1",
+        "rating":9.9
+      }
+    }
+  }
+
+
+  // readData
+
+
+{
+    "TableName": "Movies",
+    "Key": {
+      "year" : 1998,
+      "title" :  "As soon as"
+     
+    }
+  }
+
+
+  //updateData
+
+{
+    "TableName": "Movies",
+    "Key": {
+        "year" : 1998,
+        "title" :  "As soon as"
+       
+      },
+    "UpdateExpression": "set info.rating = :r , info.plot=:p , info.actors=:a",
+    "ExpressionAttributeValues": {
+        ":r": 9,
+        ":p" : "updated plot",
+        ":a" : ["abc" , "def" , "ghi"]
+      },
+    "ReturnValues":"UPDATED_NEW"
+   
+   
+  }
+
+
+// deleteItem
+
+{
+    "TableName": "Movies",
+    "Key": {
+        "year" : 1998,
+        "title" :  "As soon as"
+       
+      },
+    "ConditionExpression": " info.rating <= :val",
+    "ExpressionAttributeValues": {
+        ":val": 10
+       
+      }
+   
+   
+  }
+
+// deleteTable
+
+{
+    "TableName": "Movies"
+}
