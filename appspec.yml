@@ -18,4 +18,4 @@ hooks:
   ApplicationStart:
     - location: deploy_scripts/run.sh
       timeout: 120
-      runas: ec2-user
+      runas: root
